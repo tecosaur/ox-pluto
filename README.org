@@ -1,0 +1,23 @@
+#+title: Org export to Pluto.jl notebooks
+#+author: tecosaur
+
+#+html: <p><img src="https://img.shields.io/badge/Emacs-26.3+-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white">
+#+html: <img src="https://img.shields.io/badge/stage-%CE%B1,%20experimental-red?style=flat-square"></p>
+
+Org is great within Emacs, but hard to share with non-Emacs collages,
+particularly when it comes to computational notebook -style files.
+There are third party exporters to [[https://jupyter.org/][Jupyter]] notebooks, but for Julia a better
+option exists --- [[https://github.com/fonsp/Pluto.jl][Pluto.jl]].
+
+Using [[https://github.com/tecosaur/Org.jl][Org.jl]] we can easily add Org prose into Pluto notebooks. Making use of
+that, this package constructs cells of Org markup and Julia code for Pluto.jl.
+
+-----
+
+#+begin_src emacs-lisp
+(package! ox-pluto :recipe (:host github :repo "tecosaur/ox-pluto")) ; Doom package.el
+#+end_src
+
+#+begin_src emacs-lisp
+(ox-pluto :type git :host github :repo "tecosaur/ox-pluto") ; straight
+#+end_src

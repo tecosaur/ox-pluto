@@ -89,6 +89,24 @@ using InteractiveUtils\n\n")
                   (point-max)))))
             cells))
         (re-search-forward "\\=\\(?:[ \t\r]*\n\\)+" nil t)))
+    (when (file-exists-p "Project.toml")
+      (push
+       (cons (cons :unfolded "00000000-0000-0000-0000-000000000001")
+             (with-temp-buffer
+               (insert "PLUTO_PROJECT_TOML_CONTENTS = \"\"\"\n")
+               (insert-file-contents "Project.toml")
+               (insert "\n\"\"\"")
+               (buffer-string)))
+       cells))
+    (when (file-exists-p "Manifest.toml")
+      (push
+       (cons (cons :unfolded "00000000-0000-0000-0000-000000000002")
+             (with-temp-buffer
+               (insert "PLUTO_MANIFEST_TOML_CONTENTS = \"\"\"\n")
+               (insert-file-contents "Manifest.toml")
+               (insert "\n\"\"\"")
+               (buffer-string)))
+       cells))
     (setq cells (nreverse cells))
     (concat
      (format ox-pluto--preamble (format-time-string "%Y-%m-%d %a %H:%M"))

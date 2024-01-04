@@ -22,6 +22,7 @@
 
 (require 'ox)
 (require 'ox-org)
+(require 'uuidgen)
 
 (defvar ox-pluto--preamble
   "### A Pluto.jl notebook ###
@@ -120,6 +121,8 @@ using InteractiveUtils\n\n")
 
 (org-export-define-derived-backend 'pluto 'org
   :filters-alist '((:filter-final-output . ox-pluto--form-cells)))
+
+(declare-function julia-mode "julia-mode")
 
 ;;;###autoload
 (defun ox-pluto-export-as-pluto
